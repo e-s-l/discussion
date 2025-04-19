@@ -1,0 +1,33 @@
+
+html {
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid purple;
+}
+
+
+td {
+    padding: 10px;
+    letter-spacing: 2px;
+    border: 2px solid purple;
+}
+
+.topic-num {
+    text-align: center;
+    width: 10%;
+}
+
+/* zebra striping */
+
+tbody tr:nth-child(odd) {
+    background-color: #ff33cc;
+  }
+  
+tbody tr:nth-child(even) {
+    background-color: #e495e4;
+}
