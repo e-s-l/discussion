@@ -1,8 +1,11 @@
 <?php
 
-require("Header.html");
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
+
+require("Header.html");
+
 
 ?>
 
@@ -17,44 +20,54 @@ ini_set('display_errors', 'On');
         if (!file_exists("messages.txt") || filesize("messages.txt") == 0) {
             echo "<p>There are no messages posted.</p>";
         } else {
-            $KeyMessageArray = [];
+
             $MessageArray = file("messages.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
             $MessageArray = array_map('stripslashes', $MessageArray);
 
-            for ($i = 0; $i < count($MessageArray); ++i) {
-                $CurMessage = explode("~",$MessageArray[$i]);
-                $KeyMessageArray[$CurMessage[0]] = $CurMessage[1]."~".$CurMessage[2];
-            }
-            var_dump($KeyMessageArray);
-
-
-            /*
-            echo "<table><tbody>";
+            
+            $KeyMessageArray = [];
             for ($i = 0; $i <count($MessageArray); ++$i) {
-                $CurMsg = explode("~", $MessageArray[$i]);
+
+                $CurMessage = explode("~", $MessageArray[$i]);
+
+                $KeyArray[] = $CurMessage[0];
+                $ValueArray[] = $CurMessage[1]."~".$CurMessage[2];
+                $KeyMessageArray = array_combine($KeyArray, $ValueArray);
+
+                //$KeyMessageArray[$CurMessage[0]] = stripslashes($CurMessage[1])."~".stripslashes($CurMessage[2]);
+            }
+
+            $Count = 1;
+
+            echo "<table><tbody>";
+            foreach ($KeyMessageArray as $Message) {
+
+                $CurMessage = explode("~", $Message);
                 echo "<tr>";
-                echo "<td class=\"topic-num\"><strong>".($i+1)."</strong></td>";
+                echo "<td class=\"topic-num\"><strong>".$Count++."</strong></td>";
                 echo "<td><strong>Topic</strong>:"
-                .htmlspecialchars(stripslashes($CurMsg[0]))."<br>";
+                .htmlspecialchars(stripslashes(key($KeyMessageArray)))."<br>";
                 echo "<strong>Name</strong>:"
-                    .htmlspecialchars(stripslashes($CurMsg[1]))."<br>";
+                    .htmlspecialchars(stripslashes($CurMessage[0]))."<br>";
                 echo "<strong>Message</strong>:"
-                    .nl2br(htmlspecialchars(stripslashes($CurMsg[2])));
+                    .htmlspecialchars(stripslashes($CurMessage[1]));
                 echo "</td></tr>";
+                next($KeyMessageArray);
             }
             echo "</tbody></table>";
-            */
+
         }
     ?>
 
     <hr>
-    <p><a href="DiscussionForum.php">Post New Message</a><br><a href="RemoveDuplicates.php">Remove Duplicate Messages</a><br><a href="DeleteFirstMessage.php">Delete First Message</a><br><a href="DeleteLastMessage.php">Delete Last Message</a></p>
+    <p><a href="DiscussionForum.php">Post New Message</a><hr><a href="SortTopicsAscending.php">Sort Topics A-Z</a><br><a href="SortTopicsDescending.php">Sort Topics Z-A</a><br><a href="RemoveDuplicates.php">Remove Duplicate Messages</a><br><a href="DeleteFirstMessage.php">Delete First Message</a><br><a href="DeleteLastMessage.php">Delete Last Message</a></p>
 
     <form action="DeleteMessage.php" method="post" enctype="application/x-www-form-urlencoded">
         <p>
             Delete message number:
             <input type="text" name="message" size="5"/>
             <input type="submit" value="Delete" />
+        <hr>
         </p>
     </form>
 
