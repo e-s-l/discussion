@@ -3,9 +3,16 @@ html {
     font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 
+main {
+    justify-content: center;
+    margin: auto;
+}
+
+/* table */
+
 table {
     table-layout: fixed;
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     border: 2px solid purple;
 }
@@ -30,4 +37,27 @@ tbody tr:nth-child(odd) {
   
 tbody tr:nth-child(even) {
     background-color: #e495e4;
+}
+
+table a {
+    color: black;
+}
+
+table a:link {
+    text-decoration: none;
+}
+
+/* links */
+
+a:visited {
+}
+
+a:focus {
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+a:active {
 }

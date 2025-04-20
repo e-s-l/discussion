@@ -19,5 +19,6 @@ if (file_exists("messages.txt") && filesize("messages.txt") > 0) {
     }
 }
 
-header("location:ViewDiscussion.php");
+header("location:index.php");
+exit;
 ?>

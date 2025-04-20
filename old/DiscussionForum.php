@@ -1,4 +1,4 @@
-<?php require("Header.html"); ?>
+<?php require("header.html"); ?>
 
 <body>
     <header>
@@ -15,7 +15,7 @@
     </form>
 
     <hr>
-    <p><a href="ViewDiscussion.php">View Discussion</a></p>
+    <p><a href="index.php">View Discussion</a></p>
 
     </main>
 </body>

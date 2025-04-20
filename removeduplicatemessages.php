@@ -20,7 +20,7 @@ foreach ($topicFiles as $file) {
     }
 }
 
-header("location:index.php");
+header("location:viewtopic.php?topic_id=$topicId");
 exit;
 
 ?>

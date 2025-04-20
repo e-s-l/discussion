@@ -3,10 +3,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-
 if (file_exists("messages.txt") && filesize("messages.txt") > 0) {
     $MessageArray = file("messages.txt");
-    array_shift($MessageArray);
+    array_pop($MessageArray);
 
     $NewMessages = implode("", $MessageArray);
     $MessageStore = fopen("messages.txt", "w");
@@ -14,6 +13,7 @@ if (file_exists("messages.txt") && filesize("messages.txt") > 0) {
     fclose($MessageStore);
 }
 
-header("location:ViewDiscussion.php");
+header("location:index.php");
+exit;
 
 ?>

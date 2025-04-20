@@ -1,53 +1,59 @@
 <?php
-require("Header.html");
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-?>
+require("header.html");
 
-<body>
-    <main>
 
-    <?php
         if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message'])) {
             echo "<p>All fields must be filled.</p>";
-            echo "<p><a href=\"DiscussionForum.php\">Go Back.</a></p>";
+
         } else {
 
-            $Topic = $_POST['topic'];
-            $Name = $_POST['name'];
-            $Message = $_POST['message'];
+            $topic = trim($_POST['topic']);
+            $name = trim($_POST['name']);
+            $message = trim($_POST['message']);
+            $timestamp = time();
 
-            $PostMessage = addslashes("$Topic~$Name~$Message\n");
+            if (!is_dir("messages")) {
+                mkdir("messages");
+            }
 
-            $TopicExists = FALSE;
-            if (file_exists("messages.txt") && filesize("messages.txt") > 0) {
-                $MessageArray = file("messages.txt");
-                for ($i = 0; $i < count($MessageArray); ++$i) {
-                    $CurMessage = explode("~", $MessageArray[$i]);
-                    if (in_array(addslashes($Topic), $CurMessage)) {
-                        $TopicExists = TRUE;
+            $topicsFile = "messages/topics.txt";
+            $duplicate = false;
+            $topicIndex = 1;
+
+            if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
+                $lines = file($topicsFile);
+                foreach ($lines as $line) {
+                    $parts = explode("~", $line);
+                    if (strcasecmp(trim($parts[0]),$topic) == 0) {
+                        $duplicate = true;
                         break;
                     }
+                    $topicIndex++;
                 }
             }
 
-            if ($TopicExists) {
-                echo "<p>The topic already exists.</p>";
+            if ($duplicate) {
+                echo "<p>The topic already exists.</p>
+                <p><a href=\"index.php\">Go Back</a></p>";
             } else {
+                $messageFile = "messages/topic_$topicIndex.txt";
 
-                $MessageStore = fopen("messages.txt","a+");
-                fwrite($MessageStore, "$PostMessage");
-                fclose($MessageStore);
-        
-                echo "<p><strong>Topic</strong>: $Topic<br/></p>";
-                echo "<p><strong>Name</strong>: $Name<br/></p>";
-                echo "<p><strong>Message</strong>:$Message</p>";
+                $postTopic = addslashes("$topic~$name~$timestamp\n");
+                $postMessage = addslashes("$name~$message~$timestamp\n");
+
+                $topicsStore = fopen("$topicsFile","a+");
+                fwrite($topicsStore, "$postTopic");
+                fclose($topicsStore);
+
+                $messageStore = fopen($messageFile,"a+");
+                fwrite($messageStore, "$postMessage");
+                fclose($messageStore);
+                
+                header("location:index.php");
+                exit;
             }
         }
-    ?>
-    <hr>
-    <p><a href="ViewDiscussion.php">View Discussion</a></p>
 
-    </main>
-</body>
-</html>
+?>
