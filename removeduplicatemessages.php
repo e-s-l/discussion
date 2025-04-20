@@ -3,24 +3,24 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$dir = "messages";
-$topicFiles = array_diff(scandir($dir), ['.', '..', 'topics.txt']);
+if (isset($_GET["topic_id"])) {
+    $topicId =  (int)$_GET["topic_id"];
 
-foreach ($topicFiles as $file) {
-    $filePath = "$dir/$file";
+    $filePath = "messages/topic_$topicId.txt";
 
     if (file_exists($filePath) && filesize($filePath) > 0) {
         $MessageArray = file($filePath);
         $MessageArray = array_unique($MessageArray);
         $MessageArray = array_values($MessageArray);
         $NewMessages = implode("", $MessageArray);
-        $MessageStore = fopen($filePath, "w");
-        fwrite($MessageStore, "$NewMessages");
-        fclose($MessageStore);
+        file_put_contents($filePath, $NewMessages);
     }
-}
 
-header("location:viewtopic.php?topic_id=$topicId");
-exit;
+    header("location:viewtopic.php?topic_id=$topicId");
+    exit;
+
+} else {
+    die("invalid topic id.");
+}
 
 ?>

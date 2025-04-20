@@ -88,7 +88,6 @@ if (empty($topicResults) && empty($msgResults)) {
 
 ?>
 
-<hr>
 <p><a href="index.php">Back to Topics</a></p>
 
 </html>

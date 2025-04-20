@@ -3,49 +3,128 @@ html {
     font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 
+body {
+    background-color: ivory;
+    margin: auto;
+    padding: 1rem;
+}
+
+
 main {
     justify-content: center;
     margin: auto;
+}
+
+/* */
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+h1, h3 {
+    color: plum;
+}
+
+h2, h4 {
+    color:  mediumslateblue;
+}
+
+/* misc styling */
+
+.centre {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post {
+    border: 2px solid cornflowerblue;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    width: 60%;
+    background-color: aliceblue;
+}
+
+
+.explore-section {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.sort-section,
+.search-section {
+    flex: 1;
+}
+
+.sort-section p {
+    margin-top: -1rem;
+}
+
+.back-section {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+
+}
+
+.display {
+    margin: 2rem auto;
+    width: 80%;
 }
 
 /* table */
 
 table {
     table-layout: fixed;
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
-    border: 2px solid purple;
 }
 
 
 td {
     padding: 10px;
     letter-spacing: 2px;
-    border: 2px solid purple;
 }
 
-.topic-num {
+.num {
     text-align: center;
-    width: 10%;
+    width: 5%;
 }
 
 /* zebra striping */
 
 tbody tr:nth-child(odd) {
-    background-color: #ff33cc;
+    background-color: lightskyblue;
   }
   
 tbody tr:nth-child(even) {
-    background-color: #e495e4;
+    background-color: aliceblue;
 }
+
+/*
+aliceblue
+mediumslateblue
+border: 2px solid cornflowerblue;
+*/
 
 table a {
     color: black;
 }
 
-table a:link {
+h1 a {
+    color: plum;;
+}
+
+table a:link, h1 a:link  {
     text-decoration: none;
 }
+
+
 
 /* links */
 

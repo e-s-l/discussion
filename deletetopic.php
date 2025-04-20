@@ -3,30 +3,37 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$topicIndex = isset($_POST["topic"]) ? (int)$_POST["topic"] - 1 : -1;
 $topicsFile = "messages/topics.txt";
 
-if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
+if (isset($_POST["topic"])) {
+    $topicIndex = (int)$_POST["topic"] - 1;
 
-    if ($topicIndex < 0) {
-        die("Invalid request.");
+    if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
+
+        $topics = file($topicsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        if (isset($topics[$topicIndex])) {
+            unset($topics[$topicIndex]);
+            $topics = array_values($topics);
+            $newTopics = implode("\n", $topics)."\n";
+            $topicStore = fopen($topicsFile, "w");
+            fwrite($topicStore, "$newTopics");
+            fclose($topicStore);
+            
+            $topicFile = "messages/topic_" . ($topicIndex + 1) . ".txt";
+            if (file_exists($topicFile)) {
+                unlink($topicFile);
+            }
+        } else {
+            die("Critical failure.");
+        }
     }
 
-    $topics = file($topicsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    header("location:index.php");
+    exit;
 
-    if (isset($topics[$topicIndex])) {
-        unset($topics[$topicIndex]);
-        $topics = array_values($topics);
-        $newTopics = implode("", $topics);
-        $topicStore = fopen($topicsFile, "w");
-        fwrite($topicStore, "$newTopics");
-        fclose($topicStore);
-    } else {
-        die("Critical failure.");
-    }
-
+} else {
+    die("Invalid request.");
 }
 
-header("location:index.php");
-exit;
 ?>

@@ -3,8 +3,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $topicId = isset($_POST['topic_id']) ? (int)$_POST['topic_id'] : 0;
-$name = trim($_POST['name'] ?? '');
-$message = trim($_POST['message'] ?? '');
+$name = trim($_POST['name']); // assuming is required
+
+$message = str_replace(array("\r\n", "\r", "\n"), "<br/>", trim($_POST['message']));
+
+//$message = trim($_POST['message']);
+
 $timestamp = time();
 
 if ($topicId < 1 || $name === '' || $message === '') {

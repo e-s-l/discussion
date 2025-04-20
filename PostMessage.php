@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 require("header.html");
@@ -11,7 +13,13 @@ require("header.html");
 
             $topic = trim($_POST['topic']);
             $name = trim($_POST['name']);
-            $message = trim($_POST['message']);
+
+            $_SESSION["user"] = $name;
+
+            $message = str_replace(array("\r\n", "\r", "\n"), "<br/>", trim($_POST['message']));
+            //$message = trim($_POST['message']);
+
+
             $timestamp = time();
 
             if (!is_dir("messages")) {
