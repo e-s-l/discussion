@@ -26,7 +26,6 @@ $topicResults = [];
 $msgResults = [];
 
 
-
 foreach ($topics as $index => $line) {
     list($title, $author, $timestamp) = explode("~", $line);
     $topicId = $index + 1;

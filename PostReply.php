@@ -1,9 +1,11 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
+session_start();
 
 $topicId = isset($_POST['topic_id']) ? (int)$_POST['topic_id'] : 0;
 $name = trim($_POST['name']); // assuming is required
+$_SESSION["user"] = $name;
 
 $message = str_replace(array("\r\n", "\r", "\n"), "<br/>", trim($_POST['message']));
 
