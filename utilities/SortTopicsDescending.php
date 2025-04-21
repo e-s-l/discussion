@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$topicsFile = "messages/topics.txt";
+$topicsFile = "../messages/topics.txt";
 
 
 if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
@@ -18,7 +18,7 @@ if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
     fclose($MessageStore);
 }
 
-header("location:index.php");
+header("location:../index.php");
 exit;
 
 ?>

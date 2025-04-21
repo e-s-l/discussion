@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 session_start();
 
 $topicId = isset($_POST['topic_id']) ? (int)$_POST['topic_id'] : 0;
-$name = trim($_POST['name']); // assuming is required
+$name = trim($_POST['name']); // assuming is required, shoudln't really assume
 $_SESSION["user"] = $name;
 
 $message = str_replace(array("\r\n", "\r", "\n"), "<br/>", trim($_POST['message']));
@@ -20,7 +20,7 @@ if ($topicId < 1 || $name === '' || $message === '') {
 }
 
 $replyLine = "$name~$message~$timestamp\n";
-file_put_contents("messages/topic_$topicId.txt", $replyLine, FILE_APPEND);
+file_put_contents("data/topic_$topicId.txt", $replyLine, FILE_APPEND);
 
-header("Location: viewtopic.php?topic_id=$topicId");
+header("location:../viewtopic.php?topic_id=$topicId");
 exit;

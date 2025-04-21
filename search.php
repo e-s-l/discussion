@@ -3,90 +3,37 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-require("header.html");
+
+require_once('control/SearchController.php');
 
 
-$searchTerm = isset($_GET['q']) ? strtolower(trim($_GET['q'])) : '';
+/*****************
+the control logic
+*****************/
 
-$dir = "messages";
-$topicsFile = "$dir/topics.txt";
+$query = isset($_GET['q']) ? $_GET['q'] : '';
 
-if (!file_exists($topicsFile)) {
-    echo "<p>No topics found.</p>";
-    exit;
-}
-
-if (!file_exists($topicsFile)) {
-    echo "<p>No topics found.</p>";
-    exit;
-}
-
-$topics = file($topicsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$topicResults = [];
-$msgResults = [];
+$controller = new SearchController();
+$results = $controller->search($query);
 
 
-foreach ($topics as $index => $line) {
-    list($title, $author, $timestamp) = explode("~", $line);
-    $topicId = $index + 1;
+/*********
+the views
+**********/
 
-    if (stripos($title, $searchTerm) !== false) {
-        $topicResults[] = "<tr><td><a href='viewtopic.php?topic_id=$topicId'>" . htmlspecialchars($title) . " by " . htmlspecialchars($author) . "</a></td></tr>";
-    }
+// the html header
+require("resources/head.html");
 
-    $topicId = $index + 1;
-    $topicFile = "$dir/topic_$topicId.txt";
+// the the page header
+include('views/header.php');
 
-    if (!file_exists($topicFile)) continue;
+// the search results
+include('views/search_results.php');
 
-    $lines = file($topicFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $i => $line) {
-        if (stripos($line, $searchTerm) !== false) {
-            list($name, $message, $ts) = explode("~", $line);
-            $msgResults[] = [
-                'topicId' => $topicId,
-                'title'   => explode("~", $line)[0],
-                'name'    => $name,
-                'message' => $message,
-                'line'    => $i + 1,
-                'ts'      => $ts
-            ];
-        }
-    }
+// the end
+include('views/footer.php');
 
-}
+// all this should really be the controller
 
-echo "<h2>Search Results '" . htmlspecialchars($searchTerm) . "'</h2>";
-
-if (!empty($topicResults)) {
-    echo "<h3>Matching Topics:</h3>";
-    echo "<table><tbody>";
-    foreach ($topicResults as $r) {
-        echo $r;
-    }
-    echo "</tbody></table>";
-}
-
-if (!empty($msgResults)) {
-    echo "<h3>Matching Messages:</h3>";
-    echo "<table><tbody>";
-    foreach ($msgResults as $r) {
-        echo "<tr>";
-        echo "<td><a href='viewtopic.php?topic_id={$r['topicId']}'>" . htmlspecialchars($r['title']) . "</a></td>";
-        echo "<td>" . htmlspecialchars($r['name']) . "</td>";
-        echo "<td>" . htmlspecialchars($r['message']) . "</td>";
-        echo "<td>" . date("Y-m-d H:i", (int)$r['ts']) . "</td>";
-        echo "</tr>";
-    }
-    echo "</tbody></table>";
-}
-
-if (empty($topicResults) && empty($msgResults)) {
-    echo "<p>No matches found.</p>";
-}
 
 ?>
-
-<p><a href="index.php">Back to Topics</a></p>
-
-</html>

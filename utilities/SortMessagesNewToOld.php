@@ -4,8 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $topicId = isset($_GET['topic_id']) ? (int)$_GET['topic_id'] : 0;
-
-$topicFile = "messages/topic_$topicId.txt";
+$topicFile = "../messages/topic_$topicId.txt";
 
 
 if (file_exists($topicFile) && filesize($topicFile) > 0) {
@@ -19,7 +18,7 @@ if (file_exists($topicFile) && filesize($topicFile) > 0) {
         $timestamps[] = isset($parts[2]) ? (int)$parts[2] : 0;
     }
 
-    array_multisort($timestamps, SORT_ASC, $messages);
+    array_multisort($timestamps, SORT_DESC, $messages);
 
     $NewMessages = implode($messages);
 
@@ -28,7 +27,7 @@ if (file_exists($topicFile) && filesize($topicFile) > 0) {
     fclose($MessageStore);
 }
 
-header("location:viewtopic.php?topic_id=$topicId");
+header("location:../viewtopic.php?topic_id=$topicId");
 exit;
 
 ?>

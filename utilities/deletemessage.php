@@ -7,7 +7,7 @@ ini_set('display_errors', 'On');
 
 // topicId passed as hidden form
 $topicId = isset($_POST["topic_id"]) ? (int)$_POST["topic_id"] : 0;
-$topicFile = "messages/topic_$topicId.txt";
+$topicFile = "../messages/topic_$topicId.txt";
 
 if (isset($_POST["message_number"])) {
     $messageIndex = (int)$_POST["message_number"];
@@ -33,7 +33,7 @@ if (isset($_POST["message_number"])) {
             }
         }
     
-        header("location:viewtopic.php?topic_id=$topicId");
+        header("location:../viewtopic.php?topic_id=$topicId");
         exit;
     
 

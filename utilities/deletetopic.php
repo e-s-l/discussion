@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$topicsFile = "messages/topics.txt";
+$topicsFile = "../messages/topics.txt";
 
 if (isset($_POST["topic"])) {
     $topicIndex = (int)$_POST["topic"] - 1;
@@ -29,7 +29,7 @@ if (isset($_POST["topic"])) {
         }
     }
 
-    header("location:index.php");
+    header("location:../location:index.php");
     exit;
 
 } else {

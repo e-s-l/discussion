@@ -47,7 +47,6 @@ h2, h4 {
     background-color: aliceblue;
 }
 
-
 .explore-section {
     display: flex;
     gap: 2rem;
@@ -85,7 +84,6 @@ table {
     border-collapse: collapse;
 }
 
-
 td {
     padding: 10px;
     letter-spacing: 2px;
@@ -106,27 +104,19 @@ tbody tr:nth-child(even) {
     background-color: aliceblue;
 }
 
-/*
-aliceblue
-mediumslateblue
-border: 2px solid cornflowerblue;
-*/
+/* links */
 
 table a {
     color: black;
 }
 
-h1 a {
+h1 a, h3 a {
     color: plum;;
 }
 
-table a:link, h1 a:link  {
+table a:link, h1 a:link, h3 a:link  {
     text-decoration: none;
 }
-
-
-
-/* links */
 
 a:visited {
 }
@@ -134,9 +124,11 @@ a:visited {
 a:focus {
 }
 
-table a:hover {
+table a:hover, h1 a:hover, h3 a:hover {
     text-decoration: underline;
+    color: darkviolet;
 }
+
 
 a:active {
 }
