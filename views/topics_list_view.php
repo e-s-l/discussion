@@ -5,13 +5,19 @@
     <?php else: ?>
         <table class="centre">
             <tbody>
-                <?php foreach ($topics as $index => $topic): ?>
+                <?php foreach ($topics as $topic): ?>
                     <tr>
                         <td class="num">
-                            <strong><a href="viewtopic.php?topic_id=<?php echo $index + 1; ?>"><?php echo $index + 1; ?></a></strong>
+                            <strong><a href="viewtopic.php?topic_id=<?php 
+                            echo htmlspecialchars($topic->id ?? $topic['id']);
+                            ?>"><?php
+                             echo htmlspecialchars($topic->id ?? $topic['id']);
+                             ?></a></strong>
                         </td>
                         <td>
-                            <a href="viewtopic.php?topic_id=<?php echo $index + 1; ?>">
+                            <a href="viewtopic.php?topic_id=<?php 
+                           echo htmlspecialchars($topic->id ?? $topic['id']);
+                            ?>">
                                 <strong>Topic</strong>: <?php echo htmlspecialchars($topic->title); ?><br>
                                 <strong>Posted by</strong>: <?php echo $topic->formattedAuthor(); ?><br>
                                 <strong>Posted</strong>: <?php echo $topic->formattedDate(); ?>

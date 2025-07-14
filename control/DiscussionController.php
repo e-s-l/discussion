@@ -1,7 +1,12 @@
 <?php
 
-require_once('models/MessageFactory.php');
-require_once('models/TopicFactory.php');
+
+$baseDir = $_SERVER['DOCUMENT_ROOT'];
+
+$modelDir = $baseDir . "/models";
+
+require_once($modelDir.'/MessageFactory.php');
+require_once($modelDir.'/TopicFactory.php');
 
 
 class DiscussionController {
@@ -13,14 +18,24 @@ class DiscussionController {
 
     public function __construct() {
 
-        $baseDir = $_SERVER['DOCUMENT_ROOT'];
+         global $baseDir; 
+
         $this->dataDir = $baseDir . "/data";
         $this->topicsFile = $this->dataDir . "/topics.txt";
         $this->namePrefill = $_SESSION['user'] ?? '';
-        $this->topics = TopicFactory::loadFromFile('data/topics.txt');
+
+        $this->topics = [];
+        $loadedTopics = TopicFactory::loadFromFile($this->topicsFile);
+        foreach ($loadedTopics as $topic) {
+            $this->topics[$topic->id] = $topic;
+        }
+
     }
 
     public function showMessages(int $id): void {
+
+        // a variable to be used in explore_views to dictate which sort
+        $isViewingMessages = true;
 
         // if the name is already saved, use it
         // make this available in the included views
@@ -28,11 +43,11 @@ class DiscussionController {
         // similiarly
         $topicId = $id; 
 
-        if ($id > count($this->topics) || $id <= 0) {
-            die("Invalid topic index/Topic not found");
+        if (!isset($this->topics[$id])) {
+            die("Invalid topic ID/Topic not found");
         }
 
-        $topic = $this->topics[$id - 1];
+        $topic = $this->topics[$id];
 
         // load all messages for this topic
         $topicFile = $this->dataDir."/topic_{$id}.txt";
@@ -61,7 +76,12 @@ class DiscussionController {
 
     public function showTopics(): void {
 
-        $topics = TopicFactory::loadFromFile($this->topicsFile);
+        // a variable to be used in explore_views to dictate which sort
+        $isViewingTopics = true;
+
+        // $topics = TopicFactory::loadFromFile($this->topicsFile);
+
+        $topics = $this->topics;
 
         /*********
         the views

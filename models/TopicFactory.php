@@ -16,9 +16,14 @@ class TopicFactory {
             $lines = file($topicsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
             foreach ($lines as $line) {
-                list($title, $author, $timestamp) = explode("~", trim($line));
 
-                array_push($topics, new Topic($title, $author, (int)$timestamp));
+                // format is: id~title~author~timestamp
+                list($id, $title, $author, $timestamp) = explode("~", trim($line));
+
+                $id = (int)$id;
+                $timestamp = (int)$timestamp;
+
+                array_push($topics, new Topic($id, $title, $author, $timestamp));
                 }
             }
         }

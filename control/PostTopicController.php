@@ -61,7 +61,7 @@ if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message']))
         $topicIndex = count($topics) + 1;
         $messageFile = $dataDir."/topic_$topicIndex.txt";
 
-        $postTopic = addslashes("$topic~$name~$timestamp\n");
+        $postTopic = addslashes("$topicIndex~$topic~$name~$timestamp\n");
         $postMessage = addslashes("$name~$message~$timestamp\n");
 
         $topicsStore = fopen("$topicsFile","a+");
