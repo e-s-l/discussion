@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$topicsFile = "../messages/topics.txt";
+$topicsFile = "../data/topics.txt";
 
 if (file_exists($topicsFile) && filesize($topicsFile) > 0) {
     $MessageArray = file($topicsFile);

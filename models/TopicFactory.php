@@ -1,6 +1,9 @@
 <?php
 
-require_once('models/Topic.php');
+
+$baseDir = $_SERVER['DOCUMENT_ROOT'];
+$modelsDir = $baseDir."/models";
+require_once($modelsDir."/Topic.php");
 
 class TopicFactory {
 
@@ -18,9 +21,9 @@ class TopicFactory {
                 array_push($topics, new Topic($title, $author, (int)$timestamp));
                 }
             }
-
-            return $topics;
         }
+        return $topics;
+
     }
 }
 

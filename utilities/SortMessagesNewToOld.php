@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $topicId = isset($_GET['topic_id']) ? (int)$_GET['topic_id'] : 0;
-$topicFile = "../messages/topic_$topicId.txt";
+$topicFile = "../data/topic_$topicId.txt";
 
 
 if (file_exists($topicFile) && filesize($topicFile) > 0) {

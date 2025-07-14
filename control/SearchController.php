@@ -1,61 +1,29 @@
 <?php
 
-require_once 'models/TopicFactory.php';
-require_once 'models/MessageFactory.php';
-
-// this should be the model
+require_once('models/SearchAll.php');
 
 class SearchController {
 
-    public function search(string $query): array {
+    public function searchAndShow(string $query): void {
 
-        $results = [
-            'topics' => [],
-            'messages' => []
-        ];
+        $search = new SearchAll();
+        $results = $search->searchAll($query);
 
-        $query = strtolower(trim($query));
+        /*********
+        the views
+        **********/
 
-        if ($query === '') {
-            return $results;
-        }
+        // the the page header
+        include('views/header.php');
 
-        $topics = TopicFactory::loadFromFile('data/topics.txt');
+        // the search results
+        include('views/search_results.php');
 
-        foreach ($topics as $index => $topic) {
+        // the end
+        include('views/footer.php');
 
-            $topicId = $index + 1;
-            $topicFile = "data/topic_$topicId.txt";
-
-            if (stripos($topic->title, $query) !== false) {
-                $results['topics'][] = [
-                    'id' => $topicId,
-                    'title' => $topic->title,
-                    'author' => $topic->author];
-            }
-
-            if (file_exists($topicFile)) {
-
-                $messages = MessageFactory::loadFromFile($topicFile);
-
-                foreach ($messages as $message) {
-
-                    if (stripos($message->content, $query) !== false) {
-                        $results['messages'][] = [
-                            'id' => $topicId,
-                            'title' => $topic->title,
-                            'author' => $message->formattedAuthor(),
-                            'content' => $message->formattedContent(),
-                            'timestamp' => $message->formattedDate()
-                        ];
-                    }
-                }
-
-            }
-        }
-
-        return $results;
     }
+
 }
 
 ?>

@@ -1,6 +1,8 @@
 <?php
 
-require_once('models/Entry.php');
+$baseDir = $_SERVER['DOCUMENT_ROOT'];
+$modelsDir = $baseDir."/models";
+require_once($modelsDir."/Entry.php");
 
 class Topic extends Entry {
 

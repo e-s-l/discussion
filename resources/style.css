@@ -1,3 +1,7 @@
+/* TODO
+seperate into seperate files for each views
+resets and the standard stuff
+*/
 
 html {
     font-family: "helvetica neue", helvetica, arial, sans-serif;
@@ -53,11 +57,25 @@ h2, h4 {
     justify-content: space-between;
     align-items: flex-start;
     margin: auto;
+    flex-wrap: wrap;
 }
 
 .sort-section,
-.search-section {
+.search-section,
+.back-section {
     flex: 1;
+    height: auto;
+}
+
+.sort-categories {
+    display: flex;
+    gap: 6rem;
+    align-content: space-around;
+    justify-content: left;
+}
+
+.sort-section h3 {
+    margin-bottom: 0.25rem;
 }
 
 .sort-section p {
@@ -124,11 +142,23 @@ a:visited {
 a:focus {
 }
 
-table a:hover, h1 a:hover, h3 a:hover {
+table a:hover {
     text-decoration: underline;
-    color: darkviolet;
+    color: mediumslateblue;
+}
+
+h1 a:hover, h3 a:hover {
+    color: mediumslateblue;
 }
 
 
 a:active {
+}
+
+
+/* form */
+textarea {
+  field-sizing: content;
+  width: 100%;
+  margin: 1rem 0;
 }
