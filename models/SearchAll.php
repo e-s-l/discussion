@@ -1,7 +1,8 @@
 <?php
 
-require_once 'models/TopicFactory.php';
-require_once 'models/MessageFactory.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require_once(MODEL_DIR.'/TopicFactory.php');
+require_once(MODEL_DIR.'models/MessageFactory.php');
 
 
 class SearchAll {

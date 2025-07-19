@@ -1,6 +1,7 @@
 <?php
 
-require_once('models/SearchAll.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require_once(MODEL_DIR.'/SearchAll.php');
 
 class SearchController {
 
@@ -8,20 +9,17 @@ class SearchController {
 
         $search = new SearchAll();
         $results = $search->searchAll($query);
+        $viewPath = VIEW_DIR."/search_results.php";
 
-        /*********
-        the views
-        **********/
+        $this->render($viewPath, [
+            "query" => $query,
+            "results" => $results,
+        ]);
+    }
 
-        // the the page header
-        include('views/header.php');
-
-        // the search results
-        include('views/search_results.php');
-
-        // the end
-        include('views/footer.php');
-
+    private function render(string $viewPath, array $vars = []): void {
+        extract($vars);
+        include(VIEW_DIR.'/layout.php');
     }
 
 }

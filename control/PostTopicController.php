@@ -4,22 +4,18 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$baseDir = $_SERVER['DOCUMENT_ROOT'];
-$dataDir = $baseDir."/data";
-$modelsDir = $baseDir."/models";
-$viewsDir = $baseDir."/views";
-
-require_once($modelsDir."/TopicFactory.php");
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require_once(MODEL_DIR."/TopicFactory.php");
 
 if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message'])) {
 
     // create a general error_view with passable args...
     
-    require_once($viewsDir."/header.php");
+    require_once(VIEW_DIR."/header.php");
 
     echo "<p>All fields must be filled.</p>";
 
-    require_once($viewsDir."/footer.php");
+    require_once(VIEW_DIR."/footer.php");
 
 } else {
 
@@ -33,11 +29,14 @@ if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message']))
 
     $timestamp = time();
 
-    if (!is_dir($dataDir)) {
-        mkdir($dataDir);
+    if (!is_dir(DATA_DIR)) {
+        mkdir(DATA_DIR);
     }
 
-    $topicsFile = $dataDir."/topics.txt";
+    // FIXME
+    // if the above doesn't exist, then the below wont either!
+
+    $topicsFile = DATA_DIR."/topics.txt";
     $duplicate = false;
     
     $topics = TopicFactory::loadFromFile($topicsFile);
@@ -54,12 +53,12 @@ if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message']))
 
     if ($duplicate) {
 
-        include("../views/topic_exists_error.php");
+        include(VIEW_DIR."/topic_exists_error.php");
 
     } else {
 
         $topicIndex = count($topics) + 1;
-        $messageFile = $dataDir."/topic_$topicIndex.txt";
+        $messageFile =DATA_DIR."/topic_$topicIndex.txt";
 
         $postTopic = addslashes("$topicIndex~$topic~$name~$timestamp\n");
         $postMessage = addslashes("$name~$message~$timestamp\n");

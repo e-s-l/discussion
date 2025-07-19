@@ -1,9 +1,8 @@
 <?php
 
 
-$baseDir = $_SERVER['DOCUMENT_ROOT'];
-$modelsDir = $baseDir."/models";
-require_once($modelsDir."/Topic.php");
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require_once(MODEL_DIR."/Topic.php");
 
 class TopicFactory {
 

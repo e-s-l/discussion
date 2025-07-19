@@ -1,46 +1,55 @@
 <?php
 
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 
-$baseDir = $_SERVER['DOCUMENT_ROOT'];
-
-$modelDir = $baseDir . "/models";
-
-require_once($modelDir.'/MessageFactory.php');
-require_once($modelDir.'/TopicFactory.php');
-
+require_once(MODEL_DIR.'/MessageFactory.php');
+require_once(MODEL_DIR.'/TopicFactory.php');
 
 class DiscussionController {
 
-    private string $dataDir;
+
     private string $topicsFile;
     private string $namePrefill;
-    private array $topics;
+    private array $topics = [];
 
     public function __construct() {
 
-         global $baseDir; 
 
-        $this->dataDir = $baseDir . "/data";
-        $this->topicsFile = $this->dataDir . "/topics.txt";
+        /**
+         * FIXME
+         * the data directory should NOT be within
+         * the site's document tree.
+         */
+
+        $this->topicsFile =  DATA_DIR . "/topics.txt";
         $this->namePrefill = $_SESSION['user'] ?? '';
 
-        $this->topics = [];
         $loadedTopics = TopicFactory::loadFromFile($this->topicsFile);
+
         foreach ($loadedTopics as $topic) {
             $this->topics[$topic->id] = $topic;
         }
+    }
 
+    private function render(string $viewPath, array $vars = []): void {
+        extract($vars);
+        include(VIEW_DIR.'/layout.php');
+    }
+
+    public function showTopics(): void {
+
+        $viewPath = TOPIC_VIEWS.'/show_page.php';
+
+        $this->render($viewPath, [
+            "pageTitle" => "Topics",
+            "isViewingTopics" => true,
+            "namePrefill" => $this->namePrefill,
+            "topics" => $this->topics,
+        ]);
     }
 
     public function showMessages(int $id): void {
 
-        // a variable to be used in explore_views to dictate which sort
-        $isViewingMessages = true;
-
-        // if the name is already saved, use it
-        // make this available in the included views
-        $namePrefill = $this->namePrefill;
-        // similiarly
         $topicId = $id; 
 
         if (!isset($this->topics[$id])) {
@@ -50,62 +59,19 @@ class DiscussionController {
         $topic = $this->topics[$id];
 
         // load all messages for this topic
-        $topicFile = $this->dataDir."/topic_{$id}.txt";
+        $topicFile =  DATA_DIR."/topic_{$id}.txt";
         $messages = MessageFactory::loadFromFile($topicFile);
 
-        /********
-        the views
-        *********/
+        $viewPath = MESSAGE_VIEWS.'/show_page.php';
 
-        // include the the page header
-        include('views/header.php');
-
-        // the table listing messages within topic
-        include('views/show_messages.php');
-
-        // the search and sort section
-        include('views/explore_view.php');
-
-        // the reply section
-        include('views/post_reply_view.php');
-
-        // close up the html
-        include('views/footer.php');
-
-    }
-
-    public function showTopics(): void {
-
-        // a variable to be used in explore_views to dictate which sort
-        $isViewingTopics = true;
-
-        // $topics = TopicFactory::loadFromFile($this->topicsFile);
-
-        $topics = $this->topics;
-
-        /*********
-        the views
-        **********/
-
-        // if the name is already saved, use it
-        $namePrefill = $_SESSION['user'] ?? '';
-
-        // include the the page header
-        include('views/header.php');
-
-        // the table listing current topics
-        include('views/topics_list_view.php');
-
-        // the search and sort section
-        include('views/explore_view.php');
-
-        // the submission section
-        include('views/post_message_view.php');
-
-        // close up the html
-        include('views/footer.php');
+        $this->render($viewPath, [
+            "pageTitle" => $topic->title,
+            "isViewingMessages" => true,
+            "namePrefill" => $this->namePrefill,
+            "topicId" => $topicId,
+            "messages" => $messages,
+        ]);
     }
 }
-
 
 ?>

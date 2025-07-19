@@ -1,4 +1,3 @@
-
 <h2>Search Results '<?php echo htmlspecialchars($query) ?>'</h2>
 
 <?php if (!empty($results['topics'])): ?>
@@ -30,6 +29,5 @@
 <?php if (empty($results['topics']) && empty($results['messages'])): ?>
     <p>No matches found.</p>
 <?php endif; ?>
-
 
 <p><a href="index.php">Back to Topics</a></p>

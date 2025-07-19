@@ -3,14 +3,16 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$baseDir = $_SERVER['DOCUMENT_ROOT'];
-$dataDir = $baseDir . "/data";
-
+require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 
 $type = $_GET['type'] ?? '';
 $topicId = isset($_GET['topic_id']) ? (int)$_GET['topic_id'] : 0;
 
-parse_str($_GET['sort'] ?? '', $sortParams);
+$inputSort = $_GET['sort'] ?? '';
+
+// die($inputSort);
+
+parse_str($inputSort, $sortParams);
 $sortBy = $sortParams['by'] ?? '';
 $order = $sortParams['order'] ?? 'asc';
 
@@ -20,7 +22,7 @@ switch ($type) {
             die("Missing topic_id in sort");
         }
 
-        $topicFile = $dataDir . "/topic_$topicId.txt";
+        $topicFile = DATA_DIR . "/topic_$topicId.txt";
 
         if (!file_exists($topicFile) || filesize($topicFile) === 0) {
             die("Invalid topic file");
