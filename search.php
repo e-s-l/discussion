@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 
 require_once(CONTROL_DIR.'/SearchController.php');
 
-$query = isset($_GET['q']) ? $_GET['q'] : '';
+$query = isset($_GET['query']) ? $_GET['query'] : '';
 
 $controller = new SearchController();
 $controller->searchAndShow($query);

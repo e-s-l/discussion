@@ -4,9 +4,9 @@
         method="get">
         <label for="search"></label>
         <input 
-            type="text" 
+            type="text"
             id="search"
-            name="search"
+            name="query"
             placeholder="Search..." 
             required>
         <input type="submit" value="Go" title="search">

@@ -1,6 +1,5 @@
 <?php
 
-
 require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 require_once(MODEL_DIR."/Topic.php");
 

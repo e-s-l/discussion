@@ -2,7 +2,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 require_once(MODEL_DIR.'/TopicFactory.php');
-require_once(MODEL_DIR.'models/MessageFactory.php');
+require_once(MODEL_DIR.'/MessageFactory.php');
 
 
 class SearchAll {
