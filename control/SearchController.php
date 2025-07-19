@@ -3,6 +3,8 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 require_once(MODEL_DIR.'/SearchAll.php');
 
+include(UTILITIES_DIR."/Render.php");
+
 class SearchController {
 
     public function searchAndShow(string $query): void {
@@ -15,11 +17,6 @@ class SearchController {
             "query" => $query,
             "results" => $results,
         ]);
-    }
-
-    private function render(string $viewPath, array $vars = []): void {
-        extract($vars);
-        include(VIEW_DIR.'/layout.php');
     }
 
 }

@@ -5,6 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 require_once(MODEL_DIR.'/MessageFactory.php');
 require_once(MODEL_DIR.'/TopicFactory.php');
 
+include(UTILITIES_DIR."/Render.php");
+
 class DiscussionController {
 
 
@@ -31,16 +33,11 @@ class DiscussionController {
         }
     }
 
-    private function render(string $viewPath, array $vars = []): void {
-        extract($vars);
-        include(VIEW_DIR.'/layout.php');
-    }
-
     public function showTopics(): void {
 
         $viewPath = TOPIC_VIEWS.'/show_page.php';
 
-        $this->render($viewPath, [
+        render($viewPath, [
             "pageTitle" => "Topics",
             "isViewingTopics" => true,
             "namePrefill" => $this->namePrefill,
@@ -64,7 +61,7 @@ class DiscussionController {
 
         $viewPath = MESSAGE_VIEWS.'/show_page.php';
 
-        $this->render($viewPath, [
+        render($viewPath, [
             "pageTitle" => $topic->title,
             "isViewingMessages" => true,
             "namePrefill" => $this->namePrefill,

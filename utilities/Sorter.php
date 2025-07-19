@@ -10,8 +10,6 @@ $topicId = isset($_GET['topic_id']) ? (int)$_GET['topic_id'] : 0;
 
 $inputSort = $_GET['sort'] ?? '';
 
-// die($inputSort);
-
 parse_str($inputSort, $sortParams);
 $sortBy = $sortParams['by'] ?? '';
 $order = $sortParams['order'] ?? 'asc';
@@ -75,7 +73,7 @@ switch ($type) {
         exit;
 
     case 'topics':
-        $topicsFile = $dataDir . "/topics.txt";
+        $topicsFile = DATA_DIR."/topics.txt";
 
         if (!file_exists($topicsFile) || filesize($topicsFile) === 0) {
             die("Invalid topics file");
