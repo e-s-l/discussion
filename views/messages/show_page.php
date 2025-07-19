@@ -11,9 +11,9 @@ should only include the sort if more than one message/topic
 -->
 
 <?php
-// the table listing current topics
-include(TOPIC_VIEWS.'/list_topics.php');
-// the submission section
-include(FORM_VIEWS.'/post_message.php');
+// the table listing messages within topic
+include(MESSAGE_VIEWS.'/list_messages.php');
+// the reply section
+include(FORM_VIEWS.'/post_reply.php');
 ?>
 </main>

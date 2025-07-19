@@ -7,7 +7,7 @@ $baseDir = $_SERVER['DOCUMENT_ROOT'];
 $dataDir = $baseDir."/data";
 
 
-var_dump((int)$_POST['topic_id']);
+// var_dump((int)$_POST['topic_id']);
 
 $topicId = isset($_POST['topic_id']) ? (int)$_POST['topic_id'] : 0;
 $name = trim($_POST['name']);
