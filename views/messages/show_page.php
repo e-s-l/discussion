@@ -3,7 +3,7 @@
 <div class="title">
     <h2><?php echo strtolower($pageTitle) ?></h2>
     <?php 
-    if (count($messages) > 0) {
+    if (count($messages) > 1) {
         require(FORM_VIEWS."/sort_form.php");
     }
     ?>

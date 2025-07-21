@@ -1,14 +1,18 @@
 <div class="search-section">
     <form
+        aria-label="search form"
         action="<?php echo BASE_URL."search.php" ?>"
         method="get">
-        <label for="search"></label>
         <input 
             type="text"
+            aria-label="text input"
             id="search"
             name="query"
             placeholder="Search..." 
             required>
-        <input type="submit" value="Go" title="search">
+        <input type="submit"
+        aria-label="go search"
+        value="Go"
+        title="search">
     </form>
 </div>

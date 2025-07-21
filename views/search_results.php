@@ -30,4 +30,6 @@
     <p>no matches found.</p>
 <?php endif; ?>
 
+<!--
 <h4><a href="index.php">back to topics</a></h4>
+-->

@@ -3,7 +3,7 @@
 <?php if (count($topics) === 0): ?>
     <p>No topics posted yet.</p>
 <?php else: ?>
-    <table class="centre">
+    <table role="presentation">
         <tbody>
             <?php foreach ($topics as $topic): ?>
                 <tr>

@@ -1,5 +1,5 @@
 <?php if (count($messages) > 0): ?>
-    <table class="centre">
+    <table role="presentation">
         <tbody>
             <?php foreach ($messages as $msg): ?>
                 <tr>

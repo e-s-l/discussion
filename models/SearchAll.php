@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+//require($_SERVER['DOCUMENT_ROOT'].'/constants.php');
 require(MODEL_DIR.'/TopicFactory.php');
 require(MODEL_DIR.'/MessageFactory.php');
 

@@ -2,8 +2,8 @@
 
 :root {
     --black: #000000;
-    --white: ivory;
-    --pink: plum;
+    --white: rgba(255, 255, 230, 0.5);              /* ivory  */
+    --pink: rgba(220, 100, 220, 1);                /* plum, orchid */
     --purple: mediumslateblue;
     --dark-blue: cornflowerblue;
     --blue: lightskyblue;
@@ -61,18 +61,22 @@ header h1 {
 
 h1 {
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 2px;
     color: var(--pink);
+    font-size: 3rem;
+    text-shadow: 0 1px 1px rgba(218, 112, 214, 0.5);;
 }
 
 h2 {
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-style: italic;
     letter-spacing: 2px;
     color: var(--pink);
     margin-bottom: 1rem;
+    font-size: 2rem;
+    text-shadow: 0 1px 1px rgba(218, 112, 214, 0.5);;
 }
 
 h3 {
@@ -85,7 +89,7 @@ h3 {
 
 h4 {
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     font-style: italic;
     letter-spacing: 2px;
     color: var(--purple);
@@ -135,6 +139,10 @@ tbody tr:nth-child(even) {
 
 /* forms */
 
+form {
+    font-family: inherit;
+}
+
 form label {
     display: block;
 }
@@ -167,8 +175,22 @@ input:focus, select:focus, button:focus, textarea:focus {
 }
 
 textarea {
-  field-sizing: content;
+    min-height: 6em;
+    min-width: 50%;
+    height: auto;
+    font-family: inherit;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
+
+textarea:focus {
+    border-color: var(--blue);
+    outline: 0.2rem solid var(--blue);
+    box-shadow: 0 0 0 3px var(--white);
+}
+
+
 
 /* footer */
 

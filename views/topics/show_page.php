@@ -7,7 +7,11 @@
 
 <div class="title">
     <h2><?php echo strtolower($pageTitle) ?></h2>
-    <?php include(FORM_VIEWS."/sort_form.php") ?>
+    <?php 
+    if (count($topics) > 1 ) {
+        include(FORM_VIEWS."/sort_form.php");
+    } 
+    ?>
 </div>
 
 <?php
