@@ -18,3 +18,8 @@ Inspired by the great 4chan hack of 2025.
 ## setting-up
 
 the `data` directory needs to be owned by `www-data` for read-write.
+
+# Sample
+
+<img src="sample.png" alt="example sample of 'discussion' homepage"
+title="example sample" />
