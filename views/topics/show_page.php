@@ -10,11 +10,6 @@
     <?php include(FORM_VIEWS."/sort_form.php") ?>
 </div>
 
-<!-- 
-FIXME 
-should only include the sort if more than one message/topic
--->
-
 <?php
 // the table listing current topics
 include(TOPIC_VIEWS.'/list_topics.php');

@@ -13,6 +13,5 @@
         </tbody>
     </table>
 <?php else: ?>
-    <p>Error finding messages.</p>
-    <hr>
+    <p>error finding messages.</p>
 <?php endif; ?>

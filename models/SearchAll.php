@@ -1,13 +1,11 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
-require_once(MODEL_DIR.'/TopicFactory.php');
-require_once(MODEL_DIR.'/MessageFactory.php');
+require($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require(MODEL_DIR.'/TopicFactory.php');
+require(MODEL_DIR.'/MessageFactory.php');
 
 
 class SearchAll {
-
-    // should split this into search topics and search messages
 
     public function searchAll(string $query): array {
 

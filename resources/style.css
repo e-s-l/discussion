@@ -21,7 +21,6 @@
     color: inherit;
 }
 
-
 /* global */
 
 html {
@@ -42,7 +41,7 @@ body {
 /* header */
 
 header {
-    border-bottom: 2px solid var(--purple);
+    border-bottom: 2px solid var(--blue);
     padding: 1rem 0rem;
     margin-bottom: 1rem;
 }
@@ -60,12 +59,36 @@ header h1 {
 
 /* headings */
 
-h1, h2, h3 {
+h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--pink);
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
     font-style: italic;
     letter-spacing: 2px;
     color: var(--pink);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: var(--purple);
+}
+
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: var(--purple);
 }
 
 h1 a, h3 a {
@@ -89,6 +112,7 @@ table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 2rem;
 }
 
 td {
@@ -149,7 +173,7 @@ textarea {
 /* footer */
 
 footer {                                    /* the header, reflected */
-    border-top: 2px solid var(--purple);
+    border-top: 2px solid var(--blue);
     padding: 1rem 0rem;
     margin-top: 1rem;
 }

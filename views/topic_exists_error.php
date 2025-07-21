@@ -1,7 +1,12 @@
 <?php
 
-// this should be a general error_view with passable args...
-    
+/**
+ * FIXME
+ * 
+ * use the general render into the layout.php
+ * 
+ * this should be a general error_view with passable args...
+ */
 
 $baseUrl = "/";
 

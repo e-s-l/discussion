@@ -1,8 +1,8 @@
-<h2>Search Results '<?php echo htmlspecialchars($query) ?>'</h2>
+<h2>search results for '<?php echo htmlspecialchars($query) ?>'</h2>
 
 <?php if (!empty($results['topics'])): ?>
 
-<h3>Matching Topics:</h3>
+<h3>matching topics:</h3>
 <table><tbody>
 <?php foreach ($results['topics'] as $r): ?>
     <tr>
@@ -13,7 +13,7 @@
 <?php endif; ?>
 
 <?php if (!empty($results['messages'])): ?>
-    <h3>Matching Messages:</h3>
+    <h3>matching messages:</h3>
     <table><tbody>
         <?php foreach ($results['messages'] as $r): ?>
             <tr>
@@ -27,7 +27,7 @@
 <?php endif; ?>
 
 <?php if (empty($results['topics']) && empty($results['messages'])): ?>
-    <p>No matches found.</p>
+    <p>no matches found.</p>
 <?php endif; ?>
 
-<p><a href="index.php">Back to Topics</a></p>
+<h4><a href="index.php">back to topics</a></h4>

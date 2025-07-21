@@ -1,9 +1,8 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/constants.php');
-require_once(MODEL_DIR.'/SearchAll.php');
-
-include(UTILITIES_DIR."/Render.php");
+require($_SERVER['DOCUMENT_ROOT'].'/constants.php');
+require(MODEL_DIR.'/SearchAll.php');
+require(UTILITIES_DIR."/Render.php");
 
 class SearchController {
 
