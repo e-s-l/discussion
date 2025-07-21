@@ -16,13 +16,6 @@ class DiscussionController {
 
     public function __construct() {
 
-
-        /**
-         * FIXME
-         * the data directory should NOT be within
-         * the site's document tree.
-         */
-
         $this->topicsFile =  DATA_DIR . "/topics.txt";
         $this->namePrefill = $_SESSION['user'] ?? '';
 

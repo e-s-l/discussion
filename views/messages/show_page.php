@@ -1,7 +1,7 @@
 <main>
 
 <div class="title">
-    <h2><?php echo $pageTitle ?></h2>
+    <h2><?php echo strtolower($pageTitle) ?></h2>
     <?php include(FORM_VIEWS."/sort_form.php") ?>
 </div>
 

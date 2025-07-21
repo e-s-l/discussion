@@ -8,7 +8,7 @@ cannot assume the above exit &c
 -->
 
 <div class="sort-section">
-    <h3>sort</h3>
+    <!--<h3>sort</h3>-->
     <div class="sort-categories">
         <?php if (!empty($isViewingMessages)): ?>
             <form method="get" action="<?php echo UTILITIES_URL."Sorter.php" ?>"
@@ -18,14 +18,14 @@ cannot assume the above exit &c
 
                 <label for="sortMessages"></label>
                 <select name="sort" id="sortMessages">
-                    <option value="">method</option>
+                    <option value="">Sort...</option>
                     <option value="by=time&order=desc">Newest First</option>
                     <option value="by=time&order=asc">Oldest First</option>
                     <option value="by=alpha&order=asc">A–Z</option>
                     <option value="by=alpha&order=desc">Z–A</option>
                 </select>
 
-                <input type="submit" value="Sort">
+                <input type="submit" value="Go">
             </form>
         <?php elseif (!empty($isViewingTopics)): ?>
             <form method="get" action="<?php echo UTILITIES_URL."Sorter.php" ?>">
@@ -33,14 +33,14 @@ cannot assume the above exit &c
 
                 <label for="sortTopics"></label>
                 <select name="sort" id="sortTopics">
-                    <option value="">method</option>
+                    <option value="">Sort...</option>
                     <option value="by=time&order=desc">Newest First</option>
                     <option value="by=time&order=asc">Oldest First</option>
                     <option value="by=alpha&order=asc">A–Z</option>
                     <option value="by=alpha&order=desc">Z–A</option>
                 </select>
 
-                <input type="submit" value="Sort">
+                <input type="submit" value="Go">
             </form>
         <?php endif; ?>
     </div>

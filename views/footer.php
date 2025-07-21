@@ -1,4 +1,4 @@
 <footer>
         <!--LINK TO AN ABOUT PAGE-->
-        <p>this is the end</p>
+        <p>fin</p>
 </footer>

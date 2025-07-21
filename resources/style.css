@@ -1,10 +1,26 @@
-/* reset */
+/* variables */
+
+:root {
+    --black: #000000;
+    --white: ivory;
+    --pink: plum;
+    --purple: mediumslateblue;
+    --dark-blue: cornflowerblue;
+    --blue: lightskyblue;
+    --light-blue: aliceblue;
+}
+
+/* reset/inheritance */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
 }
+
 
 /* global */
 
@@ -13,104 +29,58 @@ html {
     font-size: 16px;
     font-weight: 400;
     scroll-behavior: smooth;
+    line-height: 1.5;
 }
 
 body {
-    background-color: ivory;
+    background-color: var(--white);
     margin: auto;
     padding: 2rem;
+    max-width: 90%;
 }
 
 /* header */
 
 header {
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid var(--purple);
+    padding: 1rem 0rem;
+    margin-bottom: 1rem;
+}
+
+header h1 {
     padding: 1rem 0rem;
 }
 
-/* forms */
-
-form label {
-    display: block;
+.title {                        /* topics/messages sub-title */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0rem;
 }
 
+/* headings */
 
-/***********************************************/
-/* old below */
-
-/* TODO
-seperate into seperate files for each views
-resets and the standard stuff
-media queries
-*/
-
-
-main {
-    justify-content: center;
-    margin: auto;
-}
-
-/* */
-
-h1 {
+h1, h2, h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     font-style: italic;
     letter-spacing: 2px;
+    color: var(--pink);
 }
 
-h1, h3 {
-    color: plum;
+h1 a, h3 a {
+    color: var(--pink);
 }
 
-h2, h4 {
-    color:  mediumslateblue;
+/* anchors */
+
+a, a:link, a:visited, a:active, a:focus {
+    text-decoration: none;
 }
 
-/* misc styling */
-
-.centre {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.post {
-    border: 2px solid cornflowerblue;
-    margin: 2rem auto;
-    padding: 0 2rem;
-    width: 60%;
-    background-color: aliceblue;
-}
-
-/* ... */
-
-.explore-section {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    flex-wrap: wrap;
-    width: 80%;
-    height: auto;
-}
-
-.sort-section {
-    margin: auto;
-    height: auto;
-}
-
-.search-section {
-    margin: auto;
-    height: auto;
-}
-
-
-/* ... */
-
-.display {
-    margin: 2rem auto;
-    width: 80%;
+a:hover {
+    text-decoration: underline;
+    color: var(--purple);
 }
 
 /* table */
@@ -131,63 +101,57 @@ td {
     width: 5%;
 }
 
-/* zebra striping */
-
-tbody tr:nth-child(odd) {
-    background-color: lightskyblue;
+tbody tr:nth-child(odd) {                   /* zebra striping */
+    background-color: var(--blue);
   }
   
 tbody tr:nth-child(even) {
-    background-color: aliceblue;
+    background-color: var(--light-blue);
 }
 
-/* links */
+/* forms */
 
-table a {
-    color: black;
+form label {
+    display: block;
 }
 
-h1 a, h3 a {
-    color: plum;;
+input, select, button, textarea {
+  padding: 0.25em;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  border-radius: 0;
 }
 
-table a:link, h1 a:link, h3 a:link  {
-    text-decoration: none;
+input:focus, select:focus, button:focus, textarea:focus {
+  outline: 0.2rem solid var(--blue);
 }
 
-a:visited {
+.post {
+    border: 2px solid var(--purple);
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 100%;
+    background-color: var(--light-blue);
 }
 
-a:focus {
+.post h2 {
+    color:  var(--purple);
 }
 
-table a:hover {
-    text-decoration: underline;
-    color: mediumslateblue;
+.post button {
+    padding: 0.25rem;
+    margin: 0.5rem 0.5rem 0 0;
 }
 
-h1 a:hover, h3 a:hover {
-    color: mediumslateblue;
-}
-
-
-a:active {
-}
-
-
-
-/* form */
 textarea {
   field-sizing: content;
-  width: 100%;
-  margin: 1rem 0;
 }
 
+/* footer */
 
-/**/
-
-.page-end {
-    margin-top: 4rem;
+footer {                                    /* the header, reflected */
+    border-top: 2px solid var(--purple);
+    padding: 1rem 0rem;
+    margin-top: 1rem;
 }
 
 footer p {

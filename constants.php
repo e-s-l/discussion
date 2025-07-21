@@ -16,4 +16,15 @@ define('BASE_URL', '/');
 define('CONTROL_URL', BASE_URL . 'control/');
 define('UTILITIES_URL', BASE_URL.'utilities/');
 
+
+/*********
+ * FIXME *
+ *********
+ *
+ * the data directory should NOT be within
+ * the site's document tree.
+ *
+ * inconsistent between urls and dirs for trailing slashes
+ * 
+ */
 ?>

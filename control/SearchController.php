@@ -13,7 +13,7 @@ class SearchController {
         $results = $search->searchAll($query);
         $viewPath = VIEW_DIR."/search_results.php";
 
-        $this->render($viewPath, [
+        render($viewPath, [
             "query" => $query,
             "results" => $results,
         ]);
