@@ -1,14 +1,17 @@
 # About
 
-Based on a chapter of "PHP Programming with MySQL" by Don Gosselin.
-Inspired by the great 4chan hack of 2025.
+A pure-php, file-based discussion forum toy, created from first principles.
 
+Based on a chapter of "PHP Programming with MySQL" by Don Gosselin.
+
+Inspired by the great 4chan hack of 2025.
 
 # TODO
 
-- delete duplicates broken since added timestamps
-- proper admin section (unfortunately to delete need to reference table rows)
-- add timestamp sorts to topics, and alpabetical sort to messages
+- be consistent with search, sort and render, whether in models or utilities
+- clearer commentrary
+- take opportunities to delete duplicated code
+- a general error view to render
 
 # Notes
 
