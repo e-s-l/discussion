@@ -12,7 +12,7 @@ class Topic extends Entry {
         public int $timestamp
     ) {
         $this->id = $id;
-        $this->title = $title;
+        $this->title = stripslashes($title);
         parent::__construct($author, $timestamp);
     }
 

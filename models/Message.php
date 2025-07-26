@@ -16,7 +16,7 @@ class Message extends Entry {
         $message = $this->content;
         // a bit hacky way of rendering line breaks but no other html...
         $message = str_replace("<br/>", "\n", $message);
-        return nl2br(htmlspecialchars($message));
+        return nl2br(htmlspecialchars(stripslashes($message)));
     }
 
 }

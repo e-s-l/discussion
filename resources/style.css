@@ -175,8 +175,10 @@ input:focus, select:focus, button:focus, textarea:focus {
 }
 
 textarea {
-    min-height: 6em;
-    min-width: 50%;
+    min-height: 3rem;
+    max-height: 6rem;
+    min-width: 40%;
+    max-width: 80%;
     height: auto;
     font-family: inherit;
     resize: vertical;
