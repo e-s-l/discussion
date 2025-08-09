@@ -1,5 +1,5 @@
 <div class="post">
-    <h2>post message</h2>
+    <h3>post message</h3>
 
     <form
         method="post"

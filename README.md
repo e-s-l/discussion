@@ -14,7 +14,10 @@ Inspired by the great 4chan hack of 2025.
 - a general error view to render
 - improve the sorter
 - move data directory out of server tree
-- escape characters are saved in storage...
+- escape characters are saved in storage, but this is ok if we strip them
+  later
+- did we do proper file locking???
+
 
 # Notes
 

@@ -9,7 +9,6 @@ include(UTILITIES_DIR."/Render.php");
 
 class DiscussionController {
 
-
     private string $topicsFile;
     private string $namePrefill;
     private array $topics = [];

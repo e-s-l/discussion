@@ -2,7 +2,7 @@
 
 <?php if (!empty($results['topics'])): ?>
 
-<h3>matching topics:</h3>
+<h2>matching topics:</h2>
 <table><tbody>
 <?php foreach ($results['topics'] as $r): ?>
     <tr>
@@ -13,7 +13,7 @@
 <?php endif; ?>
 
 <?php if (!empty($results['messages'])): ?>
-    <h3>matching messages:</h3>
+    <h2>matching messages:</h2>
     <table><tbody>
         <?php foreach ($results['messages'] as $r): ?>
             <tr>
