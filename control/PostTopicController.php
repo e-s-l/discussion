@@ -26,7 +26,6 @@ if (empty($_POST['topic']) || empty($_POST['name']) || empty($_POST['message']))
 
     $message = str_replace(array("\r\n", "\r", "\n"), "<br/>", trim($_POST['message']));
 
-
     $timestamp = time();
 
     if (!is_dir(DATA_DIR)) {

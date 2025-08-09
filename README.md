@@ -2,7 +2,7 @@
 
 A pure-php, file-based discussion forum toy, created from first principles.
 
-Based on a chapter of "PHP Programming with MySQL" by Don Gosselin.
+Based on an example found in "PHP Programming with MySQL" by Don Gosselin.
 
 Inspired by the great 4chan hack of 2025.
 
@@ -16,7 +16,7 @@ Inspired by the great 4chan hack of 2025.
 - move data directory out of server tree
 - escape characters are saved in storage, but this is ok if we strip them
   later
-- did we do proper file locking???
+- we need to do proper file locking when reading or writing messages/topics!
 
 
 # Notes
